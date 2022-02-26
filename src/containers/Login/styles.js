@@ -34,6 +34,11 @@ export const ContainerItens = styled.div`
     text-align: center;
     margin-top: 50px;
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const Label = styled.p`

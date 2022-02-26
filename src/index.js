@@ -6,7 +6,7 @@ import GlobalStyle from './styles/globalStyle'
 
 ReactDOM.render(
   <>
-    <Login />,
+    <Login />
     <GlobalStyle />
   </>,
 
