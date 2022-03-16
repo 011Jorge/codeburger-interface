@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import ProductsLogo from '../../assets/products-logo.svg'
-import CardProducts from '../../components/CardProducts'
+import { CardProducts } from '../../components'
 import apiCodeBurger from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -12,7 +12,7 @@ import {
   ProductsContainer
 } from './styles'
 
-function Products() {
+export function Products() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredProducts, setfilteredProducts] = useState([])
@@ -79,5 +79,3 @@ function Products() {
     </Container>
   )
 }
-
-export default Products
