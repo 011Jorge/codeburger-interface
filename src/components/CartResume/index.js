@@ -26,10 +26,10 @@ export function CartResume() {
       return { id: product.id, quantity: product.quantity }
     })
 
-    await toast.promise( api.post('orders', { products: order }), {
-      pending: 'Realizando o seu pedido',
+    await toast.promise(api.post('orders', { products: order }), {
+      pending: 'Realizando o seu pedido...',
       success: 'Pedido realizado com sucesso',
-      error: 'Falha ao realizar o seu pedido, tente novamente'
+      error: 'Falha ao tentar realizar o seu pedido, tente novamente'
     })
   }
 
@@ -37,7 +37,7 @@ export function CartResume() {
     <div>
       <Container>
         <div className="container-top">
-          <h2 className="title">Resumo do Pedido</h2>
+          <h2 className="title">Resumo do pedido</h2>
           <p className="items">Itens</p>
           <p className="items-price">{formatCurrency(finalPrice)}</p>
           <p className="delivery-tax">Taxa de entrega</p>
@@ -48,7 +48,7 @@ export function CartResume() {
           <p>{formatCurrency(finalPrice + deliveryTax)}</p>
         </div>
       </Container>
-      <Button style={{ width: '100%', marginTop: 30 }} onClick={submitOrder}> 
+      <Button style={{ width: '100%', marginTop: 30 }} onClick={submitOrder}>
         Finalizar Pedido
       </Button>
     </div>

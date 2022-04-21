@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -13,6 +13,10 @@ export const UserProvider = ({ children }) => {
     await localStorage.setItem('codeburger:userData', JSON.stringify(userInfo))
   }
 
+  const logout = async () => {
+    await localStorage.removeItem('codeburger:userData')
+  }
+
   useEffect(() => {
     const loadUserData = async () => {
       const clientInfo = await localStorage.getItem('codeburger:userData')
@@ -21,11 +25,12 @@ export const UserProvider = ({ children }) => {
         setUserData(JSON.parse(clientInfo))
       }
     }
+
     loadUserData()
   }, [])
 
   return (
-    <UserContext.Provider value={{ putUserData, userData }}>
+    <UserContext.Provider value={{ putUserData, userData, logout }}>
       {children}
     </UserContext.Provider>
   )
