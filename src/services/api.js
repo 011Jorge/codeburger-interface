@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiCodeBurger = axios.create({
-  baseURL: 'http://localhost:3003'
+  baseURL: 'http://localhost:3005'
 })
 
 apiCodeBurger.interceptors.request.use(async config => {
