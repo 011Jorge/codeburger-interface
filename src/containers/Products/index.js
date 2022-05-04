@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import PropTypes from 'prop-types'
 import ProductsLogo from '../../assets/products-logo.svg'
 import { CardProducts } from '../../components'
 import apiCodeBurger from '../../services/api'
@@ -12,11 +13,16 @@ import {
   ProductsContainer
 } from './styles'
 
-export function Products() {
+export function Products( { location: { state } }) {
+  let categoryId = 0 
+  if(state?.categoryId){
+    categoryId = state.categoryId
+  }
+
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredProducts, setfilteredProducts] = useState([])
-  const [activeCategories, setActiveCategories] = useState(0)
+  const [activeCategories, setActiveCategories] = useState(categoryId)
 
   useEffect(() => {
     async function loadCategories() {
@@ -78,4 +84,8 @@ export function Products() {
       </ProductsContainer>
     </Container>
   )
+}
+
+Products.PropTypes = {
+  location: PropTypes.object
 }
