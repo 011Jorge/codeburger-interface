@@ -54,10 +54,10 @@ export function Login() {
           'Opss! ocorreu um erro verifique seu email e senha e tente novamente...'
       }
     )
-
     putUserData(data)
+    
     setTimeout(() => {
-      if(data.user.admin){
+      if (data.user.admin) {
         history.push('/pedidos')
       } else {
         history.push('/')
