@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import { Container } from './styles'
+import { ProductsImg } from './styles'
 
 function Row({row}){
   const [open, setOpen] = React.useState(false);
@@ -64,7 +64,7 @@ function Row({row}){
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell>{productRow.category}</TableCell>
                       <TableCell>
-                        <img src={productRow.url} alt="image-produto"/>
+                        <ProductsImg src={productRow.url} alt="image-produto"/>
                       </TableCell>
                     </TableRow>
                   ))}
