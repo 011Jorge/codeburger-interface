@@ -26,8 +26,8 @@ function Row({ row, setOrders, orders }) {
     try {
       await api.put(`orders/${id}`, { status })
 
-      const newOrders = orders.map(order => {
-        return order._id === id ? { ...order, status } : order
+      const newOrders = orders.map( order => {
+        return order._id === id ? {...order, status} : order  
       })
       setOrders(newOrders)
     } catch (err) {
