@@ -1,6 +1,6 @@
 import React from "react"; 
 
-import { Container } from './styles'
+import { Container, ContainerItems } from './styles'
 import Orders from './Orders'
 import ListProducts from "./ListProducts";
 import { SlideMenuAdmin } from "../../components/SlideMenuAdmin";
@@ -8,9 +8,11 @@ import { SlideMenuAdmin } from "../../components/SlideMenuAdmin";
 export function Admin(){
     return (
         <Container>
-            <SlideMenuAdmin />
-            {/* <Orders /> */}
-            <ListProducts />
+            <SlideMenuAdmin />  
+            <ContainerItems>
+                {/* <Orders /> */}
+                <ListProducts />
+            </ContainerItems>
         </Container>
     )
 }
