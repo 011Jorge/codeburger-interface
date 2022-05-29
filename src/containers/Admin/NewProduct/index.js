@@ -31,7 +31,9 @@ function NewProduct() {
 
         <ReactSelect />
 
-        <Button>Adicionar produtos</Button>
+        <Button style={{ 'width': '100%', 'margin-top': '25px'}}>
+          Adicionar produtos
+        </Button>
       </form>
     </Container>  
   );
