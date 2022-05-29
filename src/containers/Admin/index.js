@@ -6,6 +6,7 @@ import ListProducts from "./ListProducts";
 import { SlideMenuAdmin } from "../../components/SlideMenuAdmin";
 import PropTypes from 'prop-types'
 import paths from "../../constants/paths";
+import NewProduct from "./NewProduct";
 
 export function Admin({ match: { path } }){
     return (
@@ -14,6 +15,7 @@ export function Admin({ match: { path } }){
             <ContainerItems>
                 {path === paths.Order && <Orders /> }
                 {path === paths.ListProducts && <ListProducts /> }
+                {path === paths.NewProduct && <NewProduct /> }
             </ContainerItems>
         </Container>
     )
