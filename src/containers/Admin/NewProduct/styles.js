@@ -28,6 +28,21 @@ export const Input = styled.input`
     border: none;
     margin-bottom: 25px;
     width: 100%;
+    min-width: 280px;
 `
-
+export const LabelUpload = styled.label`
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px dashed #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 25px;
+    gap: 10px;
+    
+    input {
+        opacity: 0;
+        width: 1px;
+    }
+`
 
