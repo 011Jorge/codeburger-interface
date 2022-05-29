@@ -14,7 +14,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import formatCurrency from '../../../utils/formatCurrency'
 
 export function ListProducts() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
 
   useEffect(() => {
     async function loadOrders() {
@@ -46,7 +46,8 @@ export function ListProducts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product) => (
+            {products && 
+              products.map((product) => (
               <TableRow
                 key={product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

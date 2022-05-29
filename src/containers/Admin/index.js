@@ -10,7 +10,7 @@ import paths from "../../constants/paths";
 export function Admin({ match: { path } }){
     return (
         <Container>
-            <SlideMenuAdmin />  
+            <SlideMenuAdmin path={path} />  
             <ContainerItems>
                 {path === paths.Order && <Orders /> }
                 {path === paths.ListProducts && <ListProducts /> }
