@@ -4,25 +4,29 @@ import ReactSelect from "react-select";
 import { Button } from "../../../components/Button";
 import apiCodeBurger from "../../../services/api";
 import { Container, Label, Input, LabelUpload } from './styles'
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function NewProduct() {
   const [fileName, setFileName] = useState(null)
+  const [categories, setCategories] = useState([])
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control } = useForm();
   const onSubmit = data => console.log(data);
 
   useEffect(() => {
-    async function loadOrders() {
-      const { data } = await apiCodeBurger.get("products");
+    async function loadCategories() {
+      const { data } = await apiCodeBurger.get("categories");
+
+      console.log(data)
+      setCategories(data)
     }
-    loadOrders();
+    loadCategories();
   }, []);
 
   return (
     <Container>
-      <form noValidate>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Label>Nome</Label>
         <Input type="text" {...register("name")}/>
 
@@ -46,9 +50,23 @@ function NewProduct() {
           />
         </LabelUpload>
 
-        <ReactSelect />
+        <Controller
+          name="category_id"
+          control={control}
+          render={({ field }) => {
+            return (
+              <ReactSelect 
+              {...field}
+              options={categories}
+              getOptionLabel={ cat => cat.name}
+              getOptionValue={ cat => cat.id}
+              placeholder="Categorias"
+            />
+            )
+          }}  
+        ></Controller>
 
-        <Button style={{ 'width': '100%', 'margin-top': '25px'}}>
+        <Button style={{ 'width': '100%', 'marginTop': '25px'}}>
           Adicionar produtos
         </Button>
       </form>
