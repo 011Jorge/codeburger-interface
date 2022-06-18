@@ -2,6 +2,7 @@ import React from "react";
 
 import { Container, ContainerItems } from './styles'
 import Orders from './Orders'
+import EditProducts from './EditProduct'
 import ListProducts from "./ListProducts";
 import { SlideMenuAdmin } from "../../components/SlideMenuAdmin";
 import PropTypes from 'prop-types'
@@ -16,6 +17,7 @@ export function Admin({ match: { path } }){
                 {path === paths.Order && <Orders /> }
                 {path === paths.ListProducts && <ListProducts /> }
                 {path === paths.NewProduct && <NewProduct /> }
+                {path === paths.EditProducts && <EditProducts/>}
             </ContainerItems>
         </Container>
     )

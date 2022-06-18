@@ -4,7 +4,7 @@ import ReactSelect from "react-select";
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { Button, ErrorMessage } from "../../../components";
+import { Button, CardProducts, ErrorMessage } from "../../../components";
 import apiCodeBurger from "../../../services/api";
 import { Container, Label, Input, LabelUpload } from './styles'
 import { useForm, Controller } from "react-hook-form";
@@ -15,8 +15,15 @@ import { useHistory } from 'react-router-dom';
 function NewProduct() {
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
-  const { push } = useHistory()
-  
+  const { 
+    push, 
+    location: {
+      state: {product}
+    }
+  } = useHistory()
+
+  console.log(product)
+
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o nome do produto'),
     price: Yup.string().required('Digite o preço do produto'),
