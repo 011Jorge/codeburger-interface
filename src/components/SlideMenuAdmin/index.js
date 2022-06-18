@@ -18,7 +18,7 @@ export function SlideMenuAdmin({ path }) {
         </ItemContainer>
       ))}
       <hr />
-      <ItemContainer style={{ position: 'absolute', bottom: '30px'}}>
+      <ItemContainer style={{ position: 'fixed', bottom: '30px'}}>
         <LogoutIcon style={{color: '#fff'}} />
         <Links to={"/login"} onClick={logout}>Sair</Links>
       </ItemContainer>

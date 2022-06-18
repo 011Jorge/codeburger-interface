@@ -9,11 +9,13 @@ import apiCodeBurger from "../../../services/api";
 import { Container, Label, Input, LabelUpload } from './styles'
 import { useForm, Controller } from "react-hook-form";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { toast } from 'react-toastify'
+import { useHistory } from 'react-router-dom';
 
 function NewProduct() {
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
-
+  const { push } = useHistory
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o nome do produto'),
     price: Yup.string().required('Digite o preço do produto'),
@@ -36,7 +38,25 @@ function NewProduct() {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async data => {
+    const productDataFormData = new FormData()
+
+    productDataFormData.append('name', data.name)
+    productDataFormData.append('price', data.price)
+    productDataFormData.append('category_id', data.category.id)
+    productDataFormData.append('file', data.file[0])
+
+    await toast.promise( apiCodeBurger.post('products', productDataFormData), {
+      pending: 'Criando novo produto...',
+      sucess: 'Produto criado com sucesso',
+      error: 'Falha ao tentar criar o produto'
+    })
+
+    setTimeout(() => {
+      push('/listar-produtos')
+    }, 2000);
+  }
+  
 
   useEffect(() => {
     async function loadCategories() {
@@ -84,7 +104,7 @@ function NewProduct() {
         
         <div>
           <Controller
-            name="category_id"
+            name="category"
             control={control}
             render={({ field }) => {
               return (
